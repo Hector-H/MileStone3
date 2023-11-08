@@ -8,7 +8,7 @@
   overflow-x: hidden;
 }
 
-.Menu { 
+.menuContainer { 
   width: 100px;
   height: 100%;
   background: grey;
@@ -26,20 +26,33 @@ main {
   margin-top: 50px;
 }
 
-.logo {
-  width: 80px;
-  min-width: 40px;
-}
-
-.logoContainer {
-  width: 60px;
-  height: 60px;
-  min-width: 50px;
-  border-radius: 20px;
-  border: 3px solid black;
+.Navbar {
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow: 0px 5px rgba(63, 59, 59 0.15);
+  gap: 10px;
+}
 
+.Logo {
+  width: 95px;
+  min-width: 40px;
+  border: 3px solid black;
+}
+
+.iconContainer {
+  width: 70px;
+  height: 70px;
+  min-width: 50px;
+  border-radius: 40px;
+  border: 3px solid black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0px 5px 20px rgb(78, 78, 78);
+  cursor: pointer;
+}
+
+.iconContainer span {
+  font-size: 12px;
 }
