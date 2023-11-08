@@ -1,10 +1,12 @@
+// Modules and Globals
 require('dotenv').config()
 const express = require('express')
 const usersRouter = require('./controllers/users')
 
 const app = express()
 
-app.use('/users', require('usersRouter'))
+// Controllers & Routes
+app.use('/users', usersRouter)
 
 app.get('/', (req, res) => {
     res.send('Hello World!');
