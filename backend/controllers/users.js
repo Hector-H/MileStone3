@@ -1,6 +1,6 @@
 const usersRouter = require('express').Router()
 
-usersRouter.post('/signup', async (req, res) => {
+usersRouter.post('/signup', (req, res) => {
     res.send('POST /signup page')
 })
 
