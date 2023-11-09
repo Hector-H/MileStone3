@@ -1,14 +1,14 @@
 const { createClient } = require("@supabase/supabase-js");
 
-const supabaseUrl = process.env.SUPABASE_URL;
-const supabaseKey = process.env.SUPABASE_KEY;
+const supabaseUrl = process.env.SUPABASE_URL; // need URL
+const supabaseKey = process.env.SUPABASE_KEY; // need key
 
 const supabase = createClient(supabaseUrl, supabaseKey);
 
 const createUser = async (user) => {
   const { data, error } = await supabase
     .from("users")
-    .upsert([
+    .update([
       {
         username: user.username,
         name: user.name,
