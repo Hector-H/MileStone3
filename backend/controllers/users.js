@@ -138,8 +138,23 @@ router.put('/:id/post-pin', async (req, res) => {
 })
 
 // Save pin route
-router.put('/:id/save-pin', (req, res) => {
-    res.send('PUT /save-pin')
+router.put('/:id/save-pin', async (req, res) => {
+    try {
+        const { data: user, error: userError } = await supabase
+          .from('users')
+          .update({
+            savedPins: supabase.sql`array_append(savedPins, ${req.body.photoUrl})`,
+          })
+          .eq('id', req.params.id);
+    
+        if (userError) {
+          throw new Error('A database error has occurred');
+        }
+    
+        return res.json(user[0]);
+    } catch (exception) {
+        return res.status(500).json({ error: exception.message });
+    }
 })
 
 // Delete pin route
