@@ -66,6 +66,14 @@ main {
 
 }
 
+.mainContainer {
+  height: auto;
+  margin-top: 15px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 500px);
+  grid-template-rows: 20px;
+}
+
 .searchBar {
   display: flex;
   align-items: center;
@@ -77,7 +85,7 @@ main {
   border: 2px solid black;
   box-shadow: 0px 3px 16px rgb(78, 78, 78);
   cursor: pointer;
-  
+
 }
 
 .searchBar input {
@@ -89,3 +97,7 @@ main {
 }
 
 
+.pin {
+
+  background-color: black;
+}

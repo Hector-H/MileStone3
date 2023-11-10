@@ -2,7 +2,7 @@ import "./App.css";
 import pinthis2 from '../src/assets/images/pinthis2.png'
 // import MenuContainer from "./components/MenuContainer";
 import { ControlPoint, Favorite, Login, Person } from '@mui/icons-material';
-
+import Pin from "./components/Pin";
 
 
 function App() {
@@ -42,7 +42,9 @@ function App() {
           <input type="text" placeholder="Search"/>
 
         </div>
-        <div className="mainContainer"></div>
+        <div className="mainContainer">
+          <Pin />
+        </div>
 
       </main>
     </div>
