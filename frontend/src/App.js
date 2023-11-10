@@ -43,7 +43,7 @@ function App() {
 
         </div>
         <div className="mainContainer">
-          <Pin />
+          <Pin pinSize = {'small'} />
         </div>
 
       </main>
