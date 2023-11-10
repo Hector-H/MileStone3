@@ -85,22 +85,23 @@ router.post('/login', async (req, res) => {
 })
 
 // Get user by ID route
-router.get('/id', async (req, res) => {
+router.get('/:id', async (req, res) => {
     try {
         const { data: user, error: userError } = await supabase
             .from('users')
             .select('*')
             .eq('id', req.params.id);
-    
+  
         if (userError) {
             throw new Error('A database error has occurred');
         }
-    
+  
         return res.json(user[0]);
     } catch (exception) {
         return res.status(500).json({ error: exception.message });
     }
-})
+  });
+  
 
 // Post pin route
 router.put('/:id/post-pin', async (req, res) => {
@@ -141,14 +142,14 @@ router.put('/:id/post-pin', async (req, res) => {
 router.put('/:id/save-pin', async (req, res) => {
     try {
         const { data: user, error: userError } = await supabase
-          .from('users')
-          .update({
-            savedPins: supabase.sql`array_append(savedPins, ${req.body.photoUrl})`,
-          })
-          .eq('id', req.params.id);
+            .from('users')
+            .update({
+                savedPins: supabase.sql`array_append(savedPins, ${req.body.photoUrl})`,
+        })
+            .eq('id', req.params.id);
     
         if (userError) {
-          throw new Error('A database error has occurred');
+            throw new Error('A database error has occurred');
         }
     
         return res.json(user[0]);
@@ -158,8 +159,23 @@ router.put('/:id/save-pin', async (req, res) => {
 })
 
 // Delete pin route
-router.put('/:id/delete-pin', (req, res) => {
-    res.send('PUT /delete-pin')
+router.put('/:id/delete-pin', async (req, res) => {
+    try {
+        const { data: user, error: userError } = await supabase
+             .from('users')
+            .update({
+                savedPins: supabase.sql`array_remove(savedPins, ${req.body.photoUrl})`,
+        })
+            .eq('id', req.params.id);
+    
+        if (userError) {
+            throw new Error('A database error has occurred');
+        }
+    
+        return res.json(user[0]);
+    } catch (exception) {
+        return res.status(500).json({ error: exception.message });
+    }
 })
 
-module.exports = usersRouter
+module.exports = router
