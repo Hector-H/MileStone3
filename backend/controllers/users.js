@@ -59,7 +59,7 @@ router.post('/login', async (req, res) => {
             .eq('username', body.username)
             
         if (userError) {
-            throw new Error ('Database error occurred')
+            throw new Error ('Database error has occurred')
         }
 
         const isPasswordCorrect = !user || !user.length
@@ -103,8 +103,41 @@ router.get('/id', async (req, res) => {
 })
 
 // Post pin route
-router.put('/:id/post-pin', (req, res) => {
-    res.send('PUT /post-pin')
+router.put('/:id/post-pin', async (req, res) => {
+    try {
+        const body = req.body;
+    
+        // checking if required data is provided
+        if (!body || !body.data) {
+            return res.status(400).json({ error: 'Data is required' });
+        }
+    
+        const { data: user, error: userError } = await supabase
+            .from('users')
+            .select('*')
+            .eq('id', req.params.id);
+        
+        if (userError) {
+            throw new Error('Database error has occurred');
+        }
+    
+        // check if the user exists
+        if (!user || user.length === 0) {
+            return res.status(404).json({ error: 'User not found' });
+        }
+    
+        // Assuming there is a 'postData' field in the user table to store the posted data
+        const updatedUser = await supabase
+            .from('users')
+            .update({
+                postData: supabase.sql`array_append(postData, ${body.data})`,
+            })
+            .eq('id', req.params.id);
+    
+        return res.json(updatedUser[0]);
+    } catch (exception) {
+        return res.status(500).json({ error: exception.message });
+    }
 })
 
 // Save pin route
