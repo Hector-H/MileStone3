@@ -1,38 +1,92 @@
-.App {
-  text-align: center;
+.App{
+  display: flex;
+}
+body{
+  margin: 0;
+  padding: 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.nav{
+  width: 100%;
+  height: 60px;
+  background-color: transparent;
+  padding: 10px;
+  display: inline-block;
+  display: flex;
+  align-items: center;
+  justify-content: right;
+}
+.search-bar{
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px;
+  display: inline-block;
+}
+.search-button{
+  padding: 10px;
+  border-radius: 20px;
+  cursor: pointer;
+  background-color: transparent;
+  border: 1px solid #ccc;
+  color: #001639;
+  box-sizing: border-box;
+}
+.search-button:hover{
+  background-color: #cd0533;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.sidebar{
+  height: 100vh;
+  width: 100px;
+  background-color: #f7e2cf;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.sidebar-img{
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  align-self: flex-start;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.sidebar-profile-pic{
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 50%;
+  padding-bottom: 10px;
+}
+
+.sidebar-nav{
+  align-self: center;
+}
+.sidebar-footer{
+  align-self: flex-end;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+}
+.sidebar-login{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 10px;
+}
+
+.sidebar-login button,
+.sidebar-nav button{
+  padding: 10px;
+  border-radius: 50px;
+  cursor: pointer;
+  background-color: transparent;
+  border: 1px solid #ccc;
+  color: #001639;
+  margin-bottom: 10px;
+}
+.sidebar-login button:hover,
+.sidebar-nav button:hover{
+  background-color: #cd0533;
 }
