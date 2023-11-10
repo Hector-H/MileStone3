@@ -84,22 +84,35 @@ router.post('/login', async (req, res) => {
     }
 })
 
-// Get user by ID route with authentication
-router.get('/id', (req, res) => {
-    res.send('GET /users')
+// Get user by ID route
+router.get('/id', async (req, res) => {
+    try {
+        const { data: user, error: userError } = await supabase
+            .from('users')
+            .select('*')
+            .eq('id', req.params.id);
+    
+        if (userError) {
+            throw new Error('A database error has occurred');
+        }
+    
+        return res.json(user[0]);
+    } catch (exception) {
+        return res.status(500).json({ error: exception.message });
+    }
 })
 
-// Post pin route with authentication
+// Post pin route
 router.put('/:id/post-pin', (req, res) => {
     res.send('PUT /post-pin')
 })
 
-// Save pin route with authentication
+// Save pin route
 router.put('/:id/save-pin', (req, res) => {
     res.send('PUT /save-pin')
 })
 
-// Delete pin route with authentication
+// Delete pin route
 router.put('/:id/delete-pin', (req, res) => {
     res.send('PUT /delete-pin')
 })
