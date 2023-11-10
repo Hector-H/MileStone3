@@ -44,6 +44,9 @@ function App() {
         </div>
         <div className="mainContainer">
           <Pin pinSize = {'small'} />
+          <Pin pinSize = {'medium'} />
+          <Pin pinSize = {'large'} />
+
         </div>
 
       </main>

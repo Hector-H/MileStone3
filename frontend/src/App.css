@@ -60,7 +60,7 @@
 
 main {
   flex: 1;
-  background-color: blue;
+  background-color: rgba(91, 135, 255, 0.799);
   margin: 50px 50px 0 50px;
   padding-top: 30px;
 
@@ -70,8 +70,10 @@ main {
   height: auto;
   margin-top: 15px;
   display: grid;
-  grid-template-columns: repeat(auto-fill, 500px);
+  justify-content: center;
+  grid-template-columns: repeat(auto-fill, 300px);
   grid-template-rows: 20px;
+
 }
 
 .searchBar {
@@ -100,4 +102,19 @@ main {
 .pin {
   border-radius: 16px;
   background-color: black;
+  margin: 4px;
+  position: relative;
+  overflow: hidden;
+}
+
+.pin.small {
+ grid-row-end: span 26;
+}
+
+.pin.medium {
+  grid-row-end: span 36;
+}
+
+.pin.large {
+  grid-row-end: span 46;
 }
