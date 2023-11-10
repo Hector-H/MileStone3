@@ -2,7 +2,6 @@ const router = require('express').Router()
 const User = require('../models/user')
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const { default: supabase } = require('../../pinthis/src/config/supabaseClient');
 
 // Signup Route
 router.post('/signup', async (req, res) => {
