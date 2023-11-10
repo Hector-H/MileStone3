@@ -8,51 +8,84 @@
   overflow-x: hidden;
 }
 
-.menuContainer { 
+.menuContainer {
   width: 100px;
   height: 100%;
-  background: grey;
-  margin-right: 20px;
-  margin-left: 80px;
-  margin-top: 50px;
-
-}
-
-main {
-  flex: 1;
-  height: 100%;
-  background-color: blue;
-  margin-right: 100px;
-  margin-top: 50px;
+  margin: 50px 20px 0 80px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
 }
 
 .Navbar {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 10px;
+  gap: 200px;
 }
 
 .Logo {
-  width: 95px;
+  align-self: flex-start;
+  width: 100px;
   min-width: 40px;
-  border: 3px solid black;
+  margin-bottom: 100px;
 }
 
 .iconContainer {
-  width: 70px;
-  height: 70px;
+  width: 80px;
+  height: 80px;
   min-width: 50px;
-  border-radius: 40px;
+  border-radius: 45px;
   border: 3px solid black;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  box-shadow: 0px 5px 20px rgb(78, 78, 78);
+  box-shadow: 0px 3px 16px rgb(78, 78, 78);
   cursor: pointer;
+  margin: 30px;
+  transition: 0.3s;
 }
 
 .iconContainer span {
   font-size: 12px;
 }
+
+.iconContainer:hover {
+  color: white;
+  background-color: black;
+}
+
+main {
+  flex: 1;
+  background-color: blue;
+  margin: 50px 50px 0 50px;
+  padding-top: 30px;
+
+}
+
+.searchBar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  width: 100%;;
+  padding: 12px 15px;
+  border-radius: 15px;
+  border: 2px solid black;
+  box-shadow: 0px 3px 16px rgb(78, 78, 78);
+  cursor: pointer;
+  
+}
+
+.searchBar input {
+  height: 100%;
+  width: 100%;
+  border: none;
+  outline: none;
+  font-size: 16px;
+}
+
+
