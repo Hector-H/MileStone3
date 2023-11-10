@@ -10,6 +10,12 @@ const Home = () => {
     const [fetchError, setFetchError] = useState(null)
     const [products, setProducts] = useState(null)
 
+    const handleDelete = (id) => {
+        setProducts(prevProducts => {
+            return prevProducts.filter(pd => pd.id !== id)
+        })
+    }
+
     useEffect(() => {
         const fetchProducts = async () => { 
             const { data, error } = await supabase
@@ -37,7 +43,7 @@ const Home = () => {
                <div>
                     <div className='product-grid'>
                         {products.map(product => (
-                        <ProductCard key={product.id} product={product}/>
+                        <ProductCard key={product.id} product={product} onDelete={handleDelete}/>
                         ))} 
                         </div>
                 </div>

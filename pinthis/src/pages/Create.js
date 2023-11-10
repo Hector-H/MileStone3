@@ -4,8 +4,6 @@ import supabase from "../config/supabaseClient"
 
 const Create = () => {
     const navigate = useNavigate()
-
-
     const [title, setTitle] = useState('')
     const [details, setDetails] = useState('')
     const [price, setPrice] = useState('')
@@ -16,7 +14,7 @@ const Create = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
 
-        if (!title || !details || !price || !image ) {
+        if (!title || !details || !price ) {
             setFormError('Make sure to have all fields completed')
             return
         }
@@ -24,6 +22,7 @@ const Create = () => {
         const { data, error} = await supabase
         .from('products')
         .insert([{ title, details, price, image }])
+        .select()
 
         if (error) {
             console.log(error)
@@ -32,7 +31,7 @@ const Create = () => {
         if (data) {
             console.log(data)
             setFormError(null)
-            navigate('/')
+            navigate("/")
         }
     }
 
