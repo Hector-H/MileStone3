@@ -1,22 +1,24 @@
-import { useEffect, useState } from 'react'
+import { Component, useEffect, useState } from 'react'
 import supabase from '../config/supabaseClient'
 
+// Component
+import ProductCard from '../components/ProductCard'
 
 
 const Home = () => {
+    console.log(supabase)
     const [fetchError, setFetchError] = useState(null)
     const [products, setProducts] = useState(null)
 
     useEffect(() => {
-        const fetchProducts = async () => { // Wrap the function with 'async'
+        const fetchProducts = async () => { 
             const { data, error } = await supabase
                 .from('products')
-                .select();
-    
+                .select()  
             if (error) {
-                setFetchError('Could not get Products');
-                setProducts(null);
-                console.log(error);
+                setFetchError('Could not get products')
+                setProducts(null)
+                console.log(error)
             }
             if (data) {
                 setProducts(data)
@@ -28,14 +30,15 @@ const Home = () => {
     }, [])
 
     return (
-        <div>
-            {fetchError && (<p>{fetchError}</p>)}
+         <div className='products'>
+            
+                {fetchError && (<p>{fetchError}</p>)}
             {products && (
-                <div className='products'>
+               <div>
                     {products.map(product => (
-                        <p>{product.title}</p>
+                       <ProductCard key={product.id} product={product}/>
                     ))}
-                </div>
+               </div>
             )}
         </div>
     )
