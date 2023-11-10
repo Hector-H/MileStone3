@@ -107,7 +107,6 @@ router.put('/:id/post-pin', async (req, res) => {
     try {
         const body = req.body;
     
-        // checking if required data is provided
         if (!body || !body.data) {
             return res.status(400).json({ error: 'Data is required' });
         }
@@ -121,12 +120,10 @@ router.put('/:id/post-pin', async (req, res) => {
             throw new Error('Database error has occurred');
         }
     
-        // check if the user exists
         if (!user || user.length === 0) {
             return res.status(404).json({ error: 'User not found' });
         }
     
-        // Assuming there is a 'postData' field in the user table to store the posted data
         const updatedUser = await supabase
             .from('users')
             .update({
