@@ -35,10 +35,12 @@ const Home = () => {
                 {fetchError && (<p>{fetchError}</p>)}
             {products && (
                <div>
-                    {products.map(product => (
-                       <ProductCard key={product.id} product={product}/>
-                    ))}
-               </div>
+                    <div className='product-grid'>
+                        {products.map(product => (
+                        <ProductCard key={product.id} product={product}/>
+                        ))} 
+                        </div>
+                </div>
             )}
         </div>
     )
