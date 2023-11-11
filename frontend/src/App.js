@@ -1,7 +1,7 @@
 import "./App.css";
 import pinthis2 from '../src/assets/images/pinthis2.png'
 // import MenuContainer from "./components/MenuContainer";
-import { ControlPoint, Favorite, Login, Person } from '@mui/icons-material';
+import { ControlPoint, Favorite, Login, Person, PersonAdd } from '@mui/icons-material';
 import Pin from "./components/Pin";
 
 
@@ -30,9 +30,14 @@ function App() {
                 <span>Login</span>
               </div>
               <div className="iconContainer">
+                <PersonAdd />
+                <span>Sign Up</span>
+              </div>
+              <div className="iconContainer">
                 <Person />
                 <span>Profile</span>
               </div>
+
 
               </div>
           </div>
