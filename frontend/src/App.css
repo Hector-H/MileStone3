@@ -1,38 +1,120 @@
 .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+  min-width: 100vw;
   min-height: 100vh;
+  width: 100vw;
+  height: 100vh;
+  background-color: white;
+  display: flex;
+  overflow-x: hidden;
+}
+
+.menuContainer {
+  width: 100px;
+  height: 100%;
+  margin: 50px 20px 0 80px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+}
+
+.Navbar {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 200px;
+}
+
+.Logo {
+  align-self: flex-start;
+  width: 100px;
+  min-width: 40px;
+  margin-bottom: 100px;
+}
+
+.iconContainer {
+  width: 80px;
+  height: 80px;
+  min-width: 50px;
+  border-radius: 45px;
+  border: 3px solid black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0px 3px 16px rgb(78, 78, 78);
+  cursor: pointer;
+  margin: 30px;
+  transition: 0.3s;
+}
+
+.iconContainer span {
+  font-size: 12px;
+}
+
+.iconContainer:hover {
+  color: white;
+  background-color: black;
+}
+
+main {
+  flex: 1;
+  background-color: rgba(91, 135, 255, 0.799);
+  margin: 50px 50px 0 50px;
+  padding-top: 30px;
+
+}
+
+.mainContainer {
+  height: auto;
+  margin-top: 15px;
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(auto-fill, 300px);
+  grid-template-rows: 20px;
+
+}
+
+.searchBar {
+  display: flex;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  background-color: white;
+  width: 100%;;
+  padding: 12px 15px;
+  border-radius: 15px;
+  border: 2px solid black;
+  box-shadow: 0px 3px 16px rgb(78, 78, 78);
+  cursor: pointer;
+
 }
 
-.App-link {
-  color: #61dafb;
+.searchBar input {
+  height: 100%;
+  width: 100%;
+  border: none;
+  outline: none;
+  font-size: 16px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+
+.pin {
+  border-radius: 16px;
+  background-color: black;
+  margin: 4px;
+  position: relative;
+  overflow: hidden;
+}
+
+.pin.small {
+ grid-row-end: span 26;
+}
+
+.pin.medium {
+  grid-row-end: span 36;
+}
+
+.pin.large {
+  grid-row-end: span 46;
 }
