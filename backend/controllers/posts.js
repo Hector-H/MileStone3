@@ -15,7 +15,7 @@ router.post('/create', async (req, res) => {
             createdAt: new Date().toISOString(), // set the current timestamp
         };
 
-        // Save the post to the database (you need to implement this)
+        // Save the post to the database
         // ...
 
         return res.status(201).json(newPost);
