@@ -16,7 +16,6 @@ router.post('/create', async (req, res) => {
         };
 
         // Save the post to the database
-        // ...
 
         return res.status(201).json(newPost);
     } catch (error) {
