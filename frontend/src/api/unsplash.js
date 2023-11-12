@@ -12,6 +12,3 @@ const unsplash = axios.create({
   
 
 export default unsplash;
-
-
-console.log(process.env.REACT_APP_UNSPLASH_ACCESS_KEY);

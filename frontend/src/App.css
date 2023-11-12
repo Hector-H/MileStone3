@@ -68,11 +68,10 @@ main {
 
 .mainContainer {
   height: auto;
-  margin-top: 15px;
+  margin-top: 20px;
   display: grid;
   justify-content: center;
-  grid-template-columns: repeat(auto-fill, 300px);
-  grid-template-rows: 20px;
+  grid-template-columns: repeat(auto-fill, 400px);
 
 }
 
@@ -100,21 +99,20 @@ main {
 
 
 .pin {
-  border-radius: 16px;
+  border-radius: 14px;
   background-color: black;
-  margin: 4px;
+  margin: 10px;
   position: relative;
   overflow: hidden;
 }
 
-.pin.small {
- grid-row-end: span 26;
+.pin img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
 }
 
-.pin.medium {
-  grid-row-end: span 36;
-}
-
-.pin.large {
-  grid-row-end: span 46;
+.pin:hover {
+  cursor: pointer;
 }

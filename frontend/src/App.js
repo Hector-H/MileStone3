@@ -54,6 +54,7 @@ function App() {
                 <Favorite />
                 <span>Favorites</span>
               </div>
+              
               </div>
 
             <div>
