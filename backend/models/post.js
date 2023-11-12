@@ -1,9 +1,9 @@
-const { createClient } = require("@supabase/supabase-js");
+const { createClient } = require("@supabase/supabase-js")
 
-const supabaseUrl = process.env.SUPABASE_URL;
-const supabaseKey = process.env.SUPABASE_KEY;
+const supabaseUrl = process.env.SUPABASE_URL
+const supabaseKey = process.env.SUPABASE_KEY
 
-const supabase = createClient(supabaseUrl, supabaseKey);
+const supabase = createClient(supabaseUrl, supabaseKey)
 
 const createPost = async (post) => {
     const { data, error } = await supabase
@@ -17,7 +17,7 @@ const createPost = async (post) => {
         ]);
 
     if (error) {
-        throw new Error(error.message);
+        throw new Error(error.message)
     }
 
     return data;
@@ -30,12 +30,12 @@ const createPost = async (post) => {
         .eq("id", postId);
 
     if (error) {
-        throw new Error(error.message);
+        throw new Error(error.message)
     }
 
     return data[0];
 };
 
-const Post = { createPost, findPostById };
+const Post = { createPost, findPostById }
 
 module.exports = Post;

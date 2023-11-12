@@ -1,26 +1,41 @@
-const express = require('express');
-const router = express.Router();
-const Post = require('../models/post');
+const express = require('express')
+const router = express.Router()
+const Post = require('../models/post')
 
-// Example route to create a new post
+
 router.post('/create', async (req, res) => {
     const body = req.body;
 
     try {
-        // Create a new post
         const newPost = {
-            id: 'some-unique-id', // generate a unique ID
-            userId: body.userId, // get the user ID from the request or wherever it comes from
-            content: body.content,
-            createdAt: new Date().toISOString(), // set the current timestamp
-        };
+        userId: body.userId,
+        content: body.content,
+        createdAt: new Date().toISOString(),
+        }
 
-        // Save the post to the database
+        const createdPost = await Post.createPost(newPost);
 
-        return res.status(201).json(newPost);
+        return res.status(201).json(createdPost);
     } catch (error) {
         return res.status(500).json({ error: error.message });
     }
-});
+})
 
-module.exports = router;
+// Get a post by ID
+router.get('/:id', async (req, res) => {
+    const postId = req.params.id
+
+    try {
+        // Retrieve the post from the database using the Post model
+        const post = await Post.findPostById(postId);
+
+        if (!post) {
+        return res.status(404).json({ error: 'Post not found' })
+        }
+
+        return res.json(post);
+    } catch (error) {
+        return res.status(500).json({ error: error.message })
+    }
+})
+module.exports = router
