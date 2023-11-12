@@ -1,60 +1,23 @@
-import "./App.css";
-import pinthis2 from '../src/assets/images/pinthis2.png'
-// import MenuContainer from "./components/MenuContainer";
-import { ControlPoint, Favorite, Login, Person, PersonAdd } from '@mui/icons-material';
-import Pin from "./components/Pin";
-
+import logo from './logo.svg';
+import './App.css';
 
 function App() {
   return (
     <div className="App">
-
-      <div className="menuContainer">
-  
-        <img src={pinthis2} alt="PinThis logo" className="Logo"/>
-          <div className="Navbar">
-            <div>
-              <div className="iconContainer">
-                <ControlPoint />
-                <span>Add Post</span>
-              </div>
-              <div className="iconContainer">
-                <Favorite />
-                <span>Favorites</span>
-              </div>
-              </div>
-
-            <div>
-              <div className="iconContainer">
-                <Login />
-                <span>Login</span>
-              </div>
-              <div className="iconContainer">
-                <PersonAdd />
-                <span>Sign Up</span>
-              </div>
-              <div className="iconContainer">
-                <Person />
-                <span>Profile</span>
-              </div>
-
-
-              </div>
-          </div>
-      </div>
-      <main>
-        <div className="searchBar">
-          <input type="text" placeholder="Search"/>
-
-        </div>
-        <div className="mainContainer">
-          <Pin pinSize = {'small'} />
-          <Pin pinSize = {'medium'} />
-          <Pin pinSize = {'large'} />
-
-        </div>
-
-      </main>
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <p>
+          Edit <code>src/App.js</code> and save to reload.
+        </p>
+        <a
+          className="App-link"
+          href="https://reactjs.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Learn React
+        </a>
+      </header>
     </div>
 
   );
