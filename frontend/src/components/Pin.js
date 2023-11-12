@@ -1,9 +1,11 @@
 import React from "react";
 
-function Pin() {
+function Pin({ imageUrl, altText }) {
     return (
-        <div className="pin"></div>
-    )
+        <div className="pin">
+            <img src={imageUrl} alt={altText} />
+        </div>
+    );
 }
 
 export default Pin;
