@@ -1,5 +1,6 @@
 import "./App.css";
 import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import pinthis2 from '../src/assets/images/pinthis2.png'
 // import MenuContainer from "./components/MenuContainer";
 import { ControlPoint, Favorite, Login, Person, PersonAdd } from '@mui/icons-material';
@@ -39,6 +40,7 @@ function App() {
 
 
   return (
+  <Router>
     <div className="App">
 
       <div className="menuContainer">
@@ -89,7 +91,7 @@ function App() {
 
       </main>
     </div>
-
+    </Router>
   );
 }
 
