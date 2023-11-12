@@ -1,4 +1,5 @@
 import "./App.css";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import pinthis2 from '../src/assets/images/pinthis2.png'
 // import MenuContainer from "./components/MenuContainer";
 import { ControlPoint, Favorite, Login, Person, PersonAdd } from '@mui/icons-material';
@@ -7,6 +8,7 @@ import Pin from "./components/Pin";
 
 function App() {
   return (
+  <Router>
     <div className="App">
 
       <div className="menuContainer">
@@ -56,7 +58,7 @@ function App() {
 
       </main>
     </div>
-
+    </Router>
   );
 }
 
