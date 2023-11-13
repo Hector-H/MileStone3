@@ -11,12 +11,12 @@
   box-shadow: 0px 3px 16px rgb(78, 78, 78);
   cursor: pointer;
   max-width: 84vw;
-  }
-  
+}
+
 .searchBar input {
   height: 100%;
   width: 100%;
   border: none;
   outline: none;
   font-size: 25px;
-  }
+}
