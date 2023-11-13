@@ -10,7 +10,10 @@
   border: 2px solid black;
   box-shadow: 0px 3px 16px rgb(78, 78, 78);
   cursor: pointer;
-  max-width: 84vw;
+  max-width: 80vw;
+  position: sticky;
+  top: 15px;
+  z-index: 100;
   }
   
 .searchBar input {
