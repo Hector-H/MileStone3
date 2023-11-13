@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
-import PinThislogo from './images/PinThis-logo.jpeg';
+import board2 from '../assets/images/board2.jpg'
 import '../css/Signup.css';
 
 export default function Signup() {
@@ -20,29 +20,29 @@ export default function Signup() {
   return (
     <div className="signup-page">
       <div className="signup-title">
-        <h1>Create an Account</h1>
+        <h1>Create An Account</h1>
       </div>
       <div className="signup-container">
+        <img src={board2} alt='Blue mood board'/>
         <div className="signup-form">
-          <img className="signup-logo" src={PinThislogo} alt="PinThis Logo" onClick={() => window.location.href = '/'} />
           <Form onSubmit={handleSubmit}>
             <Form.Group className="mb-3" controlId="formBasicEmail">
-              <Form.Label>Email address</Form.Label>
+              <Form.Label>Email address: </Form.Label>
               <Form.Control type="email" placeholder="Enter email" value={email} onChange={handleEmailChange} />
               <Form.Text className="text-muted"></Form.Text>
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="formBasicPassword">
-              <Form.Label>Password</Form.Label>
+              <Form.Label>Password: </Form.Label>
               <Form.Control type="password" placeholder="Password" value={password} onChange={handlePasswordChange} />
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="formBasicPicture">
-              <Form.Label>Profile Picture</Form.Label>
+              <Form.Label>Profile Picture: </Form.Label>
               <Form.Control type="file" accept="image/*" onChange={handleProfilePictureChange} />
             </Form.Group>
             <Button variant="primary" type="submit">
-              Signup
+              Create Account
             </Button>
           </Form>
         </div>
