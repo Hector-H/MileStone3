@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button, Form } from 'react-bootstrap';
-import PinThislogo from './images/PinThis-logo.jpeg';
+import PinThislogo from '../assets/images/pinthis2.png';
 
 export default function Login() {
     return (
