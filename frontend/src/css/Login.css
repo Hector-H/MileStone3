@@ -2,18 +2,22 @@
     margin: 20px 0 0 300px; 
 }
 
-/* .login-container {
+.login-container {
     display: flex;
     align-items: center;
     justify-content: center;
   }
 
-  .login-form {
+.login-form {
     display: flex;
     flex-direction: column;
     margin-left: 20px;
   }
 
-  .login-logo {
+.login-logo {
     cursor: pointer;
-  } */
+  }
+
+.login-title, .login-form {
+    font-size: 30px;
+  }

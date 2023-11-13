@@ -5,6 +5,7 @@ import Sidebar from "./components/sidebar";
 import Loginpage from "./pages/login";
 import Signup from "./pages/signup";
 import Home from "./components/home";
+import AddPin from "./components/AddPin";
 
 function App(){
   return(
@@ -16,6 +17,7 @@ function App(){
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Loginpage />} />
             <Route path="/signup" element={<Signup />} />
+            <Route path="/addpin" element={<AddPin />} />
           </Routes>
         </div>
       </Router>

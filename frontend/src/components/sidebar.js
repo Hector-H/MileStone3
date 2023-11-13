@@ -9,7 +9,7 @@ export default function Sidebar() {
         <img src={pinthis3} alt="PinThis logo" className="Logo" onClick={() => window.location.href = ('/')}/>
           <div className="Navbar">
             <div>
-              <div className="iconContainer">
+              <div onClick={() => window.location.href = '/AddPin'} className="iconContainer">
                 <ControlPoint />
                 <span>Add Post</span>
               </div>
