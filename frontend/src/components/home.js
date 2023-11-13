@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import unsplash from "../api/unsplash"
 import Pin from './Pin';
+import '../css/MainContainer.css';
+import '../css/SearchBar.css';
+
 
 export default function Home() {
     const [photos, setPhotos] = useState([]);

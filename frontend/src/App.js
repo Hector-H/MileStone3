@@ -1,6 +1,6 @@
-import "./App.css";
+import "../src/css/App.css";
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Sidebar from "./components/sidebar";
 import Loginpage from "./pages/login";
 import Signup from "./pages/signup";

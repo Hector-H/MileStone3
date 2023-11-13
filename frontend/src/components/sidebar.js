@@ -1,23 +1,19 @@
 import React from 'react';
-import { ControlPoint, Favorite, Login, Person, PersonAdd } from '@mui/icons-material';
-import pinthis2 from '../assets/images/pinthis2.png';
+import { ControlPoint, Login, Person, PersonAdd } from '@mui/icons-material';
+import pinthis3 from '../assets/images/pinthis3.png';
+import '../css/Sidebar.css'
 
 export default function Sidebar() {
     return(
         <div className="menuContainer">
-        <img src={pinthis2} alt="PinThis logo" className="Logo" onClick={() => window.location.href = ('/')}/>
+        <img src={pinthis3} alt="PinThis logo" className="Logo" onClick={() => window.location.href = ('/')}/>
           <div className="Navbar">
             <div>
               <div className="iconContainer">
                 <ControlPoint />
                 <span>Add Post</span>
               </div>
-              <div className="iconContainer">
-                <Favorite />
-                <span>Favorites</span>
-              </div>
-              
-              </div>
+            </div>
 
             <div>
               <div onClick={() => window.location.href = '/login'}  className="iconContainer">
