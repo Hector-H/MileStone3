@@ -5,13 +5,25 @@ import pinthis2 from '../src/assets/images/pinthis2.png'
 import { ControlPoint, Favorite, Login, Person, PersonAdd } from '@mui/icons-material';
 import Pin from "./components/Pin";
 import unsplash from "./api/unsplash"
-
+import PinForm from "./components/PinForm";
 
 function App() {
+  const [showPinForm, setShowPinForm] = useState(false);
   const [photos, setPhotos] = useState([]);
 
+  // Reveal pin form
+/*    const togglePinForm = () => {
+    setShowPinForm(!showPinForm);
+  };
+
+  const handleAddPin = (pinData) => {
+    console.log("Adding pin:", pinData);
+    setShowPinForm(false);
+  };
+*/
+
   useEffect(() => {
-    //Storing photos in local storage
+    // Storing photos in local storage
     const cachedData = localStorage.getItem('cachedPhotos');
 
     if (cachedData) {
@@ -35,61 +47,50 @@ function App() {
         });
     }
   }, []);
-  
-
 
   return (
     <div className="App">
-
       <div className="menuContainer">
-  
         <img src={pinthis2} alt="PinThis logo" className="Logo"/>
-          <div className="Navbar">
-            <div>
-              <div className="iconContainer">
-                <ControlPoint />
-                <span>Add Post</span>
-              </div>
-              <div className="iconContainer">
-                <Favorite />
-                <span>Favorites</span>
-              </div>
-              
-              </div>
-
-            <div>
-              <div className="iconContainer">
-                <Login />
-                <span>Login</span>
-              </div>
-              <div className="iconContainer">
-                <PersonAdd />
-                <span>Sign Up</span>
-              </div>
-              <div className="iconContainer">
-                <Person />
-                <span>Profile</span>
-              </div>
-
-
-              </div>
+        <div className="Navbar">
+          <div>
+            <div className="iconContainer" onClick={togglePinForm}>
+              <ControlPoint />
+              <span>Add Post</span>
+            </div>
+            <div className="iconContainer">
+              <Favorite />
+              <span>Favorites</span>
+            </div>
           </div>
+          <div>
+            <div className="iconContainer">
+              <Login />
+              <span>Login</span>
+            </div>
+            <div className="iconContainer">
+              <PersonAdd />
+              <span>Sign Up</span>
+            </div>
+            <div className="iconContainer">
+              <Person />
+              <span>Profile</span>
+            </div>
+          </div>
+        </div>
       </div>
       <main>
         <div className="searchBar">
-          <input type="text" placeholder="Search"/>
-
+          <input type="text" placeholder="Search" />
         </div>
         <div className="mainContainer">
-          {photos.map(photo => (
+          {photos.map((photo) => (
             <Pin key={photo.id} imageUrl={photo.urls.small} altText={photo.description} />
           ))}
-
         </div>
-
+        {showPinForm && <PinForm onAddPin={handleAddPin} setShowPinForm={setShowPinForm} />}
       </main>
     </div>
-
   );
 }
 

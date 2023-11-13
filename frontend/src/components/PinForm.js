@@ -1,18 +1,22 @@
 import React, { useState } from 'react';
 
-const PinForm = ({ onAddPin }) => {
+const PinForm = ({ onAddPin, setShowPinForm }) => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleAddPin = (e) => {
     e.preventDefault();
+    // Call the onAddPin function with the pin data
     onAddPin({ title, description });
+    // Reset form fields
     setTitle('');
     setDescription('');
+    // Hiding the form
+    setShowPinForm(false);
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleAddPin}>
       <label>
         Title:
         <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} />

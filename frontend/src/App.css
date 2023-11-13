@@ -60,7 +60,6 @@
 
 main {
   flex: 1;
-  background-color: rgba(91, 135, 255, 0.799);
   margin: 50px 50px 0 50px;
   padding-top: 30px;
 
@@ -72,6 +71,7 @@ main {
   display: grid;
   justify-content: center;
   grid-template-columns: repeat(auto-fit, 400px);
+  object-fit: cover;
 
 }
 
