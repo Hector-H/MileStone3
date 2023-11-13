@@ -1,6 +1,5 @@
 import React from 'react';
 import { Button, Form } from 'react-bootstrap';
-import pinthis2 from '../assets/images/pinthis2.png';
 import '../css/Login.css';
 import board1 from '../assets/images/board1.jpg'
 
@@ -11,7 +10,6 @@ export default function Login() {
                 <h1>Welcome Back!</h1>
             </div>
             <div className="login-container">
-                <img className="login-logo" src={pinthis2} alt="PinThis Logo" onClick={() => window.location.href = '/'}/>
                 <img src={board1} alt="Blue mood board"/>
                 <div className="login-form">
                     <Form>
