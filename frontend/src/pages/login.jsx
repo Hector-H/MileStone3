@@ -3,6 +3,7 @@ import { Button, Form } from 'react-bootstrap';
 import pinthis2 from '../assets/images/pinthis2.png';
 import '../css/Login.css';
 //import board1 from '../assets/images/board1.jpg'
+import PinThislogo from '../assets/images/pinthis2.png';
 
 export default function Login() {
     return (
