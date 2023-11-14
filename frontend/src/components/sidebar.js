@@ -24,7 +24,7 @@ export default function Sidebar() {
                 <PersonAdd />
                 <span>Sign Up</span>
               </div>
-              <div className="iconContainer">
+              <div onClick={() => window.location.href = '/profile'} className="iconContainer">
                 <Person />
                 <span>Profile</span>
               </div>
