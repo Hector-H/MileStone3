@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import unsplash from "../api/unsplash"
+import unsplash from "../api/unsplash";
 import Pin from './Pin';
+import SearchBar from './SearchBar';
 import '../css/MainContainer.css';
 import '../css/SearchBar.css';
 
-
 export default function Home() {
-    const [photos, setPhotos] = useState([]);
+  const [photos, setPhotos] = useState([]);
+  const [query, setQuery] = useState('nature');
 
   useEffect(() => {
-    //Storing photos in local storage
+    // Storing photos in local storage
     const cachedData = localStorage.getItem('cachedPhotos');
 
     if (cachedData) {
@@ -19,7 +20,7 @@ export default function Home() {
       // Grabbing photos from the Unsplash API
       unsplash.get('/photos', {
         params: {
-          query: 'nature',
+          query,
           per_page: 20,
         },
       })
@@ -32,24 +33,20 @@ export default function Home() {
           console.error('Error fetching photos:', error);
         });
     }
-  }, []);
-  
+  }, [query]);
 
+  const handleSearch = (newQuery) => {
+    setQuery(newQuery);
+  };
 
   return (
-  
     <div className="home">
-
-        <div className="searchBar">
-          <input type="text" placeholder="Search"/>
-
-        </div>
-        <div className="mainContainer">
-          {photos.map(photo => (
-            <Pin key={photo.id} imageUrl={photo.urls.small} altText={photo.description} />
-          ))}
-
-        </div>
-        </div>
-  )
+      <SearchBar onSearch={handleSearch} />
+      <div className="mainContainer">
+        {photos.map(photo => (
+          <Pin key={photo.id} imageUrl={photo.urls.small} altText={photo.description} />
+        ))}
+      </div>
+    </div>
+  );
 }
