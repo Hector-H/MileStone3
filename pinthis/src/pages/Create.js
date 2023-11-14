@@ -1,7 +1,9 @@
 import { useState } from "react"
+import { useNavigate } from "react-router-dom"
+import supabase from "../config/supabaseClient"
 
 const Create = () => {
-
+    const navigate = useNavigate()
     const [title, setTitle] = useState('')
     const [details, setDetails] = useState('')
     const [price, setPrice] = useState('')
@@ -12,12 +14,25 @@ const Create = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
 
-        if (!title || !details || !price || !image ) {
+        if (!title || !details || !price ) {
             setFormError('Make sure to have all fields completed')
             return
         }
 
-        console.log(title, details, price, image)
+        const { data, error} = await supabase
+        .from('products')
+        .insert([{ title, details, price, image }])
+        .select()
+
+        if (error) {
+            console.log(error)
+            setFormError('Make sure to have all fields completed')
+        }
+        if (data) {
+            console.log(data)
+            setFormError(null)
+            navigate("/")
+        }
     }
 
     return ( 

@@ -2,7 +2,7 @@
     align-self: flex-start;
     width: 120px;
     min-width: 40px;
-    margin-bottom: 100px;
+    
 }
 
 .Logo:hover {
@@ -14,7 +14,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 200px;
+    height: 100%;
 }
 
 .menuContainer {

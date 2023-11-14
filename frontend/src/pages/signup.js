@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import board2 from '../assets/images/board2.jpg'
 import '../css/Signup.css';
+import PinThislogo from '../assets/images/pinthis2.png';
 
 export default function Signup() {
   const [email, setEmail] = useState('');
