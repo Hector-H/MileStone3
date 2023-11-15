@@ -6,6 +6,7 @@ import Loginpage from "./pages/login";
 import Signup from "./pages/signup";
 import Home from "./components/home";
 import AddPin from "./components/AddPin";
+import Profile from "./pages/profile";
 
 function App(){
   return(
@@ -18,6 +19,7 @@ function App(){
             <Route path="/login" element={<Loginpage />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/addpin" element={<AddPin />} />
+            <Route path="/profile" element={<Profile />} />
           </Routes>
         </div>
       </Router>

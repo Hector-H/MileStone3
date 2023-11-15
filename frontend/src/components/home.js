@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import unsplash from "../api/unsplash"
+import unsplash from "../api/unsplash";
 import Pin from './Pin';
 import '../css/MainContainer.css';
 import '../css/SearchBar.css';
 import supabase from '../config/supabaseClient';
 
-
 export default function Home() {
-    const [photos, setPhotos] = useState([]);
+  const [photos, setPhotos] = useState([]);
     const [fetchError, setFetchError] = useState(null)
     const [products, setProducts] = useState(null)
 
@@ -17,6 +16,7 @@ export default function Home() {
           return prevProducts.filter(pd => pd.id !== id)
       })
   }
+  const [searchQuery, setSearchQuery] = useState('');
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -34,58 +34,59 @@ export default function Home() {
                 setFetchError(null)
             }
     } 
-    //Storing photos in local storage
+    // Storing photos in local storage
     const cachedData = localStorage.getItem('cachedPhotos');
 
-    if (cachedData) {
-      const parsedData = JSON.parse(cachedData);
-      setPhotos(parsedData);
-    } else {
-      // Grabbing photos from the Unsplash API
-      unsplash.get('/photos', {
-        params: {
-          query: 'nature',
-          per_page: 20,
-        },
-      })
-        .then(response => {
-          // Cache the new data
-          localStorage.setItem('cachedPhotos', JSON.stringify(response.data));
-          setPhotos(response.data);
-        })
-        .catch(error => {
-          console.error('Error fetching photos:', error);
-        });
-    }
-    fetchProducts()
-  }, []);
-  
+    const fetchPhotos = async () => {
+      try {
+        let response;
 
+        if (searchQuery) {
+          // If there's a search query, fetch photos based on the query
+          response = await unsplash.get('/search/photos', {
+            params: {
+              query: searchQuery,
+              per_page: 20,
+            },
+          });
+        } else {
+          // If there's no search query, fetch default photos (e.g., nature)
+          response = await unsplash.get('/photos', {
+            params: {
+              query: 'nature',
+              per_page: 20,
+            },
+          });
+        }
+
+        // Cache the new data
+        localStorage.setItem('cachedPhotos', JSON.stringify(response.data));
+        setPhotos(response.data.results || response.data); // Use results for search, fallback to data for default
+      } catch (error) {
+        console.error('Error fetching photos:', error);
+      }
+      fetchProducts()
+  };
+
+    // Fetch photos when the component mounts or when the searchQuery changes
+    fetchPhotos();
+  }, [searchQuery]);
 
   return (
-  
     <div className="home">
-      {fetchError && (<p>{fetchError}</p>)}
-        <div className="searchBar">
-          <input type="text" placeholder="Search"/>
-
-        </div>
-        <div className="mainContainer">
-          {photos.map(photo => (
-            <Pin key={photo.id} imageUrl={photo.urls.small} altText={photo.description} onDelete={handleDelete} />
-          ))}
-        
-        {fetchError && (<p>{fetchError}</p>)}
-          {products && (
-            <div className='added products'>
-              {products.map(product => (
-                <p>{product.photo}</p>
-              ))} </div>
-          )}
-        
+      <div className="searchBar">
+        <input
+          type="text"
+          placeholder="Search"
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+        />
       </div>
-        </div>
-        
-        
-  )
-              }
+      <div className="mainContainer">
+        {photos.map(photo => (
+          <Pin key={photo.id} imageUrl={photo.urls.small} altText={photo.description} />
+        ))}
+      </div>
+    </div>
+  );
+}
