@@ -26,11 +26,11 @@ const AddPin = ({ onAddPin, setShowAddPin }) => {
     .select()
 
     if (error) {
-        console.log(error)
+        console.log('Error adding pin:', error)
         setFormError('Make sure to have all fields completed')
     }
     if (data) {
-        console.log(data)
+        console.log('Pin added successfully:',data)
         setFormError(null)
         navigate("/")
     }
