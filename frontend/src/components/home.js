@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import unsplash from "../api/unsplash";
 import Pin from './Pin';
-import SearchBar from './SearchBar';
+// import SearchBar from './SearchBar';
 import '../css/MainContainer.css';
 import '../css/SearchBar.css';
 
