@@ -2,20 +2,39 @@ import React, { useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import '../css/AddPin.css';
 import board3 from '../assets/images/board3.jpg';
+import { useNavigate } from 'react-router-dom'
+import supabase from '../config/supabaseClient';
 
 const AddPin = ({ onAddPin, setShowAddPin }) => {
+  const navigate = useNavigate()
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [photo, setPhoto] = useState(null);
+  const [formError, setFormError] = useState(null)
 
-  const handleAddPin = (e) => {
-    e.preventDefault();
-    onAddPin({ title, description, photo });
-    setTitle('');
-    setDescription('');
-    setPhoto(null);
-    setShowAddPin(false);
-  };
+  const handleAddPin = async (e) => {
+    e.preventDefault()
+  
+    if (!title || !description || !photo ) {
+        setFormError('Make sure to have all fields completed')
+        return
+    }
+
+    const { data, error} = await supabase
+    .from('products')
+    .insert([{ title, description, photo }])
+    .select()
+
+    if (error) {
+        console.log(error)
+        setFormError('Make sure to have all fields completed')
+    }
+    if (data) {
+        console.log(data)
+        setFormError(null)
+        navigate("/")
+    }
+}
 
   return (
     <div className="add-pin-page">
@@ -41,6 +60,7 @@ const AddPin = ({ onAddPin, setShowAddPin }) => {
             <Button variant="primary" type="submit">
               Add Pin
             </Button>
+            {formError && <p className="error">{formError}</p>}
           </Form>
         </div>
       </div>
