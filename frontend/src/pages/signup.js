@@ -6,8 +6,7 @@ import '../css/Signup.css';
 export default function Signup() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [setProfilePicture] = useState(null);
-//  const [profilePicture] = useState(null);
+  const [profilePicture, setProfilePicture] = useState(null);
 
   const handleEmailChange = (e) => setEmail(e.target.value);
   const handlePasswordChange = (e) => setPassword(e.target.value);

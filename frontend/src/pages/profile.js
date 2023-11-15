@@ -43,7 +43,7 @@ export default function Profile() {
 
       <div className="profile-info">
         <div className="profile-picture">
-          <img src={profilepic} alt="Profile picture" />
+          <img src={profilepic} alt="User" />
         </div>
         <div className="user-info">
           <h2>John Doe</h2>
