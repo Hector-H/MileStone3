@@ -6,6 +6,8 @@ const app = express()
 
 // Controllers & Routes
 app.use('/users', require('./controllers/users'))
+app.use('/posts', require('./controllers/posts'))
+app.use('/pins', require('./controllers/pins'))
 
 app.get('/', (req, res) => {
     res.send('Hello World!');
