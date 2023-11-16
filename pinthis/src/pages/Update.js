@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
-import supabase from "../config/supabaseClient"
+import supabase from "../../../frontend/src/config/supabaseClient"
 
 const Update = () => {
     const { id } = useParams()
