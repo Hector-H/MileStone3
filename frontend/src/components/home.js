@@ -7,33 +7,15 @@ import supabase from '../config/supabaseClient';
 
 export default function Home() {
   const [photos, setPhotos] = useState([]);
-    const [fetchError, setFetchError] = useState(null)
-    const [products, setProducts] = useState(null)
 
-
-    const handleDelete = (id) => {
-      setProducts(prevProducts => {
-          return prevProducts.filter(pd => pd.id !== id)
-      })
-  }
+  //   const handleDelete = (id) => {
+  //     setProducts(prevProducts => {
+  //         return prevProducts.filter(pd => pd.id !== id)
+  //     })
+  // }
   const [searchQuery, setSearchQuery] = useState('');
 
   useEffect(() => {
-    const fetchProducts = async () => {
-      const { data, error } = await supabase
-                .from('products')
-                .select()
-                  
-            if (error) {
-                setFetchError('Could not get products')
-                setProducts(null)
-                console.log(error)
-            }
-            if (data) {
-                setProducts(data)
-                setFetchError(null)
-            }
-    } 
     // Storing photos in local storage
     const cachedData = localStorage.getItem('cachedPhotos');
 
@@ -65,7 +47,7 @@ export default function Home() {
       } catch (error) {
         console.error('Error fetching photos:', error);
       }
-      fetchProducts()
+      
   };
 
     // Fetch photos when the component mounts or when the searchQuery changes

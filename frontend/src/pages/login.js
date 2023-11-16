@@ -16,6 +16,8 @@ export default function Login() {
     supabase.auth.onAuthStateChange((_event, session) => {
       setSession(session)
     })
+
+    console.log(supabase.auth.session())
   }, [])
 
     return (
