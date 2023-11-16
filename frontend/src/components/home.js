@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import unsplash from "../api/unsplash";
 import Pin from './Pin';
+// import SearchBar from './SearchBar';
 import '../css/MainContainer.css';
 import '../css/SearchBar.css';
 import supabase from '../config/supabaseClient';
@@ -16,9 +17,6 @@ export default function Home() {
   const [searchQuery, setSearchQuery] = useState('');
 
   useEffect(() => {
-    // Storing photos in local storage
-    const cachedData = localStorage.getItem('cachedPhotos');
-
     const fetchPhotos = async () => {
       try {
         let response;
@@ -28,7 +26,7 @@ export default function Home() {
           response = await unsplash.get('/search/photos', {
             params: {
               query: searchQuery,
-              per_page: 20,
+              per_page: 35,
             },
           });
         } else {
@@ -36,7 +34,7 @@ export default function Home() {
           response = await unsplash.get('/photos', {
             params: {
               query: 'nature',
-              per_page: 20,
+              per_page: 35,
             },
           });
         }

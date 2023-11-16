@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import '../css/Profile.css';
+import profilepic from '../assets/images/profilepic.png'
 
 export default function Profile() {
   const [pins, setPins] = useState([
@@ -36,17 +37,25 @@ export default function Profile() {
 
   return (
     <div className="profile-container">
+      <div className="profile-title">
+        <h1>Profile Page</h1>
+      </div>
+
       <div className="profile-info">
         <div className="profile-picture">
-          <img src="https://via.placeholder.com/150" alt="Profile Picture" />
+          <img src={profilepic} alt="User" />
         </div>
         <div className="user-info">
-          <h1>John Doe</h1>
+          <h2>John Doe</h2>
           <p><a href={`mailto:${email}`}>{email}</a></p>
         </div>
       </div>
       <div className="profile-pins">
-        <h2>My Pins</h2>
+        <div className="pins-title">
+          <h2>My Pins</h2>
+        </div>
+
+
         {pins.map((pin) => (
           <div className="pins" key={pin.id}>
             <img src={pin.imageUrl} alt={`Pin ${pin.id}`} />
