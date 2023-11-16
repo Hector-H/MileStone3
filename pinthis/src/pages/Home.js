@@ -1,5 +1,5 @@
 import { Component, useEffect, useState } from 'react'
-import supabase from '../config/supabaseClient'
+import supabase from '../../../frontend/src/config/supabaseClient'
 
 // Component
 import ProductCard from '../components/ProductCard'

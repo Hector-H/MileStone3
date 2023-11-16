@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import supabase from "../config/supabaseClient"
+import supabase from "../../../backend/config/supabaseClient"
 
 const ProductCard = ({ product, onDelete }) => {
 

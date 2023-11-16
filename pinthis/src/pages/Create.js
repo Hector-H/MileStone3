@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
-import supabase from "../config/supabaseClient"
+import supabase from "../../../frontend/src/config/supabaseClient"
 
 const Create = () => {
     const navigate = useNavigate()
