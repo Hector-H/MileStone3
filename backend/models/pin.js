@@ -1,4 +1,4 @@
-const { createClient } = require("@supabase/supabase-js");
+/* const { createClient } = require("@supabase/supabase-js");
 
 const supabaseUrl = process.env.SUPABASE_URL;
 const supabaseKey = process.env.SUPABASE_KEY;
@@ -39,4 +39,4 @@ const findPinById = async (pinId) => {
 
 const Pin = { createPin, findPinById }
 
-module.exports = Pin
+module.exports = Pin */

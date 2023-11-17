@@ -1,4 +1,4 @@
-const express = require('express')
+/* const express = require('express')
 const pinRouter = express.Router()
 const Pin = require('../models/pin')
 
@@ -41,3 +41,4 @@ pinRouter.get('/:id', async (req, res) => {
 })
 
 module.exports = pinRouter;
+ */

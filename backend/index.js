@@ -12,9 +12,8 @@ app.use(express.json());
 // Controllers & Routes
 app.use('/users', userRouter);
 app.use('/posts', postRouter);
-app.use('/pins', pinRouter);
+/* app.use('/pins', pinRouter); */
 
-// Error Handling Middleware
 app.use((err, req, res, next) => {
     console.error(err.stack);
     res.status(500).json({ error: 'Internal Server Error' });
