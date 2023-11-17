@@ -1,9 +1,9 @@
 const express = require('express')
-const router = express.Router()
+const pinRouter = express.Router()
 const Pin = require('../models/pin')
 
 // Create a new pin
-router.post('/create', async (req, res) => {
+pinRouter.post('/create', async (req, res) => {
     const body = req.body
 
     try {
@@ -24,7 +24,7 @@ router.post('/create', async (req, res) => {
     }
 })
 
-router.get('/:id', async (req, res) => {
+pinRouter.get('/:id', async (req, res) => {
     const pinId = req.params.id;
 
     try {
@@ -40,4 +40,4 @@ router.get('/:id', async (req, res) => {
     }
 })
 
-module.exports = router;
+module.exports = pinRouter;

@@ -1,20 +1,23 @@
 // Modules and Globals
 require('dotenv').config()
 const express = require('express')
+const userRouter = require('./controllers/users')
+const pinRouter = require('./controllers/pins')
+const postRouter = require('./controllers/posts')
 
 const app = express()
 
+app.use(express.json());
+
 // Controllers & Routes
-app.use('/users', require('./controllers/users'))
-app.use('/posts', require('./controllers/posts'))
-app.use('/pins', require('./controllers/pins'))
+app.use('/users', userRouter)
+app.use('/posts', postRouter)
+app.use('/pins', pinRouter)
 
-app.get('/', (req, res) => {
-    res.send('Hello World!');
+
+app.use((err, req, res, next) => {
+    console.error(err.stack);
+    res.status(500).send('Something went wrong!');
 });
-
-app.get('*', (req, res) => {
-    res.status(404).send('<h1>404 Page</h1>')
-})
   
   app.listen(process.env.PORT);
