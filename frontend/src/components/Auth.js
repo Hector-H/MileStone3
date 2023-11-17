@@ -25,7 +25,7 @@ export default function Auth() {
   return (
     <div className="container mx-auto text-center w-72">
       <div className="col-6 form-widget" aria-live="polite">
-        <h1 >Login in</h1>
+        <h1 >Log in</h1>
         <p className="text-xs text-gray-500 pb-3">Sign in via magic link with your email below</p>
         {loading ? (
           'Sending magic link...'
