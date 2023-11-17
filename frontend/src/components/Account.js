@@ -17,7 +17,7 @@ const Account = ({ session }) => {
         try {
             setLoading(true)
             const user = supabase.auth.user()
-            const session = supabase.auth.session();
+            
 
             let { data, error, status} = await supabase
             .from('profiles')
@@ -54,7 +54,7 @@ const Account = ({ session }) => {
             };
     
             let { error } = await supabase.from('profiles').upsert(updates, { returning: 'minimal' });
-    
+            
             if (error) {
                 throw error;
             }
@@ -88,15 +88,15 @@ const Account = ({ session }) => {
                         onChange={(e) => setUsername(e.target.value)} 
                         />
                     </div>
-                    {/* <div>
-                        <input type="email"
-                        name="email"
+                    <div>
+                        <input type="website"
+                        name="website"
                         placeholder="your@website"
                         id="website" 
                         value={website || ''}
                         onChange={(e) => setWebsite(e.target.value)}
                         />
-                    </div> */}
+                    </div>
                     <div>
                         <button>
                             updateProfile
