@@ -1,0 +1,38 @@
+.Logo {
+    align-self: flex-start;
+    width: 120px;
+    min-width: 40px;
+    
+}
+
+.Logo:hover {
+    cursor: pointer;
+}
+
+.Navbar {
+    display: flex;  
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.menuContainer {
+    width: 100px;
+    height: 100%;
+    margin: 50px 40px 0 80px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    position: fixed;
+}
+
+.iconContainer span {
+    font-size: 16px;
+}
+
+.iconContainer:hover {
+    color: white;
+    background-color: rgb(74, 95, 250);
+}
+  

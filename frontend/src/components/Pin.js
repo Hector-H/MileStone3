@@ -1,5 +1,6 @@
 import React from "react";
 
+
 function Pin({ imageUrl, altText }) {
     return (
         <div className="pin">

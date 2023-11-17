@@ -1,0 +1,9 @@
+.mainContainer {
+  height: calc(100% - 20px);
+  width: 90vw;
+  margin: 20px 0 0 200px;
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(auto-fill, 400px);
+  object-fit: cover;
+}

@@ -1,0 +1,55 @@
+.App {
+  min-width: 100vw;
+  min-height: 100vh;
+  width: 100vw;
+  height: 100vh;
+  background-color: white;
+  display: flex;
+  overflow-x: hidden;
+}
+
+.iconContainer {
+  width: 100px;
+  height: 100px;
+  min-width: 50px;
+  border-radius: 60px;
+  border: 3px solid black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0px 3px 16px rgb(78, 78, 78);
+  cursor: pointer;
+  margin: 30px;
+  transition: 0.3s;
+}
+
+
+main {
+  flex: 1;
+  margin: 50px 50px 0 50px;
+  padding-top: 30px;
+
+}
+
+
+.pin {
+  border-radius: 14px;
+  background-color: black;
+  margin: 10px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0px 3px 16px rgb(78, 78, 78);
+  object-fit: cover;
+  object-position: center;
+}
+  
+.pin img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.pin:hover {
+  cursor: pointer;
+}
