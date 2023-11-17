@@ -37,6 +37,19 @@ const findUserByUsername = async (username) => {
   return data[0];
 };
 
-const User = { createUser, findUserByUsername };
+const findUserById = async (userId) => {
+  const { data, error } = await supabase
+    .from("users")
+    .select()
+    .eq("id", userId);
+
+  if (error) {
+    throw new Error(error.message);
+  }
+
+  return data[0];
+};
+
+const User = { createUser, findUserByUsername, findUserById };
 
 module.exports = User;
