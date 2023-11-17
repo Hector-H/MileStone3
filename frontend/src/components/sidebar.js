@@ -1,5 +1,5 @@
 import React from 'react';
-import { ControlPoint, Login, Person, PersonAdd } from '@mui/icons-material';
+import { ControlPoint, Login, Person } from '@mui/icons-material';
 import pinthis3 from '../assets/images/pinthis3.png';
 import '../css/Sidebar.css'
 
@@ -19,10 +19,6 @@ export default function Sidebar() {
               <div onClick={() => window.location.href = '/login'}  className="iconContainer">
                 <Login />
                 <span>Login</span>
-              </div>
-              <div onClick={() => window.location.href = '/signup'} className="iconContainer">
-                <PersonAdd />
-                <span>Sign Up</span>
               </div>
               <div onClick={() => window.location.href = '/profile'} className="iconContainer">
                 <Person />
