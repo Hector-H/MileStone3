@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import '../css/Profile.css';
-import profilepic from '../assets/images/profilepic.png'
+//import profilepic from '../assets/images/profilepic.png'
 
 export default function Profile() {
   const [pins, setPins] = useState([
@@ -38,18 +38,9 @@ export default function Profile() {
   return (
     <div className="profile-container">
       <div className="profile-title">
-        <h1>Profile Page</h1>
+        <h1>My Profile</h1>
       </div>
 
-      <div className="profile-info">
-        <div className="profile-picture">
-          <img src={profilepic} alt="User" />
-        </div>
-        <div className="user-info">
-          <h2>John Doe</h2>
-          <p><a href={`mailto:${email}`}>{email}</a></p>
-        </div>
-      </div>
       <div className="profile-pins">
         <div className="pins-title">
           <h2>My Pins</h2>
