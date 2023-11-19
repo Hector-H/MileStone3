@@ -1,13 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../css/Profile.css';
-//import profilepic from '../assets/images/profilepic.png'
+import supabase from '../config/supabaseClient';
+import Pin from '../components/Pin';
+
 
 export default function Profile() {
-  const [pins, setPins] = useState([
-    { id: 1, imageUrl: 'https://via.placeholder.com/150' },
-    { id: 2, imageUrl: 'https://via.placeholder.com/150' },
-    { id: 3, imageUrl: 'https://via.placeholder.com/150' },
-  ]);
+  const [pins, setPins] = useState(null);
+  const [fetchError, setFetchError] = useState(null);
 
   const handleDelete = (id) => {
     setPins((prevPins) => prevPins.filter((pin) => pin.id !== id));
@@ -26,12 +25,33 @@ export default function Profile() {
     if (file) {
       const imageUrl = URL.createObjectURL(file);
       setPins((prevPins) =>
-        prevPins.map((pin) =>
-          pin.id === id ? { ...pin, imageUrl } : pin
-        )
+        prevPins.map((pin) => (pin.id === id ? { ...pin, imageUrl } : pin))
       );
     }
   };
+
+  useEffect(() => {
+    const fetchPins = async () => {
+      try {
+        const { data, error } = await supabase.from('pins').select();
+
+        if (error) {
+          setFetchError('Could not fetch pins');
+          setPins(null);
+          console.error(error);
+        }
+
+        if (data) {
+          setPins(data);
+          setFetchError(null);
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchPins();
+  }, []);
 
   const email = 'Johndoe@example.com';
 
@@ -46,23 +66,27 @@ export default function Profile() {
           <h2>My Pins</h2>
         </div>
 
-
-        {pins.map((pin) => (
-          <div className="pins" key={pin.id}>
-            <img src={pin.imageUrl} alt={`Pin ${pin.id}`} />
-            <div className="edit-delete">
-              <button className="edit" onClick={() => handleEdit(pin.id)}>
-                Edit
-              </button>
-              <button className="delete" onClick={() => handleDelete(pin.id)}>
-                Delete
-              </button>
-            </div>
+        {fetchError ? (
+          <p>Error: {fetchError}</p>
+        ) : (
+          <div>
+            {pins &&
+              pins.map((pin) => (
+                <div className="pins" key={pin.id}>
+                  <Pin key={pin.id} pin={pin}/>
+                  <div className="edit-delete">
+                    <button className="edit" onClick={() => handleEdit(pin.id)}>
+                      Edit
+                    </button>
+                    <button className="delete" onClick={() => handleDelete(pin.id)}>
+                      Delete
+                    </button>
+                  </div>
+                </div>
+              ))}
           </div>
-        ))}
-
+        )}
       </div>
     </div>
   );
 }
-

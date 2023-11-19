@@ -5,7 +5,7 @@ import board3 from '../assets/images/board3.jpg';
 import { useNavigate } from 'react-router-dom'
 import supabase from '../config/supabaseClient';
 
-const AddPin = ({ onAddPin, setShowAddPin }) => {
+const AddPin = ({ userId, onAddPin, setShowAddPin }) => {
   const navigate = useNavigate()
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
@@ -21,9 +21,16 @@ const AddPin = ({ onAddPin, setShowAddPin }) => {
     }
 
     const { data, error} = await supabase
-    .from('products')
-    .insert([{ title, description, photo }])
-    .select()
+    .from('pins')
+    // .insert([{ title, description, photo }])
+    .insert([
+      {
+      user_id: userId, 
+      title,
+      description, 
+      photo
+      }
+    ])
 
     if (error) {
         console.log('Error adding pin:', error)
@@ -32,7 +39,7 @@ const AddPin = ({ onAddPin, setShowAddPin }) => {
     if (data) {
         console.log('Pin added successfully:',data)
         setFormError(null)
-        navigate("/")
+        navigate("/profile")
     }
 }
 
@@ -55,7 +62,7 @@ const AddPin = ({ onAddPin, setShowAddPin }) => {
             </Form.Group>
             <Form.Group controlId="formPinPhoto" className="mb-3">
               <Form.Label>Upload Photo: </Form.Label>
-              <Form.Control type="file" accept="image/*" onChange={(e) => setPhoto(e.target.files[0])} />
+              <Form.Control type="img" onChange={(e) => setPhoto(e.target.value)} />
             </Form.Group>
             <Button variant="primary" type="submit">
               Add Pin

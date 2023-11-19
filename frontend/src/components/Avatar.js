@@ -52,11 +52,11 @@ export default function Avatar( {url, size, onUpload}) {
   }
 
   return (
-    <div style={{ width: size }} aria-live="polite" className='container mx-auto text-center'>
+    <div >
     <div>
        <div>
-           <label for="files" class=" opacity-25 w-full h-full bg-gray-400 rounded-full flex justify-center absolute  cursor-pointer">
-               {/* <img src={camera} alt="" class="w-24 h-24 mt-5" /> */}
+           <label for="files" >
+               
            </label>
            <img 
 
