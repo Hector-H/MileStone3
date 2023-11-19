@@ -1,20 +1,27 @@
 // Modules and Globals
 require('dotenv').config()
 const express = require('express')
+const userRouter = require('./controllers/users')
+const pinRouter = require('./controllers/pins')
+const postRouter = require('./controllers/posts')
+const authenticate = require('./middleware/auth')
 
 const app = express()
 
-// Controllers & Routes
-app.use('/users', require('./controllers/users'))
-app.use('/posts', require('./controllers/posts'))
-app.use('/pins', require('./controllers/pins'))
+app.use(express.json())
 
-app.get('/', (req, res) => {
-    res.send('Hello World!');
+// Middleware
+app.use(authenticate)
+
+
+// Controllers & Routes
+app.use('/users', userRouter)
+app.use('/posts', postRouter)
+/* app.use('/pins', pinRouter); */
+
+app.use((err, req, res, next) => {
+    console.error(err.stack)
+    res.status(500).json({ error: 'Internal Server Error' })
 });
 
-app.get('*', (req, res) => {
-    res.status(404).send('<h1>404 Page</h1>')
-})
-  
-  app.listen(process.env.PORT);
+app.listen(process.env.PORT)

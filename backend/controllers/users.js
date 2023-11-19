@@ -1,10 +1,10 @@
-const router = require('express').Router()
+const userRouter = require('express').Router()
 const User = require('../models/user')
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
 // Signup Route
-router.post('/signup', async (req, res) => {
+userRouter.post('/signup', async (req, res) => {
     const body = req.body;
   
     try {
@@ -48,7 +48,7 @@ router.post('/signup', async (req, res) => {
 });
 
 // Login Route
-router.post('/login', async (req, res) => {
+userRouter.post('/login', async (req, res) => {
     const body = req.body
 
     try {
@@ -84,7 +84,7 @@ router.post('/login', async (req, res) => {
 })
 
 // Get user by ID route
-router.get('/:id', async (req, res) => {
+userRouter.get('/:id', async (req, res) => {
     try {
         const { data: user, error: userError } = await supabase
             .from('users')
@@ -103,7 +103,7 @@ router.get('/:id', async (req, res) => {
   
 
 // Post pin route
-router.put('/:id/post-pin', async (req, res) => {
+userRouter.put('/:id/post-pin', async (req, res) => {
     try {
         const body = req.body;
     
@@ -138,7 +138,7 @@ router.put('/:id/post-pin', async (req, res) => {
 })
 
 // Save pin route
-router.put('/:id/save-pin', async (req, res) => {
+userRouter.put('/:id/save-pin', async (req, res) => {
     try {
         const { data: user, error: userError } = await supabase
             .from('users')
@@ -158,7 +158,7 @@ router.put('/:id/save-pin', async (req, res) => {
 })
 
 // Delete pin route
-router.put('/:id/delete-pin', async (req, res) => {
+userRouter.put('/:id/delete-pin', async (req, res) => {
     try {
         const { data: user, error: userError } = await supabase
              .from('users')
@@ -177,4 +177,4 @@ router.put('/:id/delete-pin', async (req, res) => {
     }
 })
 
-module.exports = router
+module.exports = userRouter
