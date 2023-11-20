@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import '../css/Profile.css';
 import supabase from '../config/supabaseClient';
-import Pin from '../components/Pin';
-
+import ProfilePin from '../components/ProfilePins';
+import { Link } from 'react-router-dom';
 
 export default function Profile() {
   const [pins, setPins] = useState(null);
@@ -12,13 +12,13 @@ export default function Profile() {
     setPins((prevPins) => prevPins.filter((pin) => pin.id !== id));
   };
 
-  const handleEdit = (id) => {
-    const input = document.createElement('input');
-    input.type = 'file';
-    input.accept = 'image/*';
-    input.onchange = (e) => handleImageChange(e, id);
-    input.click();
-  };
+  // const handleEdit = (id) => {
+  //   const input = document.createElement('input');
+  //   input.type = 'file';
+  //   input.accept = 'image/*';
+  //   input.onchange = (e) => handleImageChange(e, id);
+  //   input.click();
+  // };
 
   const handleImageChange = (e, id) => {
     const file = e.target.files[0];
@@ -73,11 +73,14 @@ export default function Profile() {
             {pins &&
               pins.map((pin) => (
                 <div className="pins" key={pin.id}>
-                  <Pin key={pin.id} pin={pin}/>
+                  <ProfilePin key={pin.id} pin={pin}/>
                   <div className="edit-delete">
-                    <button className="edit" onClick={() => handleEdit(pin.id)}>
+                  <Link to={'/profile/' + pin.id }>
+                  <button className="edit">
                       Edit
                     </button>
+                  </Link>
+                    
                     <button className="delete" onClick={() => handleDelete(pin.id)}>
                       Delete
                     </button>
