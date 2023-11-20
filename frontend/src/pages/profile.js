@@ -4,12 +4,14 @@ import supabase from '../config/supabaseClient';
 import ProfilePin from '../components/ProfilePins';
 import { Link } from 'react-router-dom';
 
-export default function Profile() {
+export default function Profile () {
   const [pins, setPins] = useState(null);
   const [fetchError, setFetchError] = useState(null);
 
   const handleDelete = (id) => {
-    setPins((prevPins) => prevPins.filter((pin) => pin.id !== id));
+    setPins(prevPins => {
+      return prevPins.filter(pm => pm.id !== id)
+    })
   };
 
   // const handleEdit = (id) => {
@@ -73,18 +75,18 @@ export default function Profile() {
             {pins &&
               pins.map((pin) => (
                 <div className="pins" key={pin.id}>
-                  <ProfilePin key={pin.id} pin={pin}/>
-                  <div className="edit-delete">
+                  <ProfilePin key={pin.id} pin={pin} onDelete={handleDelete}/>
+                  {/* <div className="edit-delete">
                   <Link to={'/profile/' + pin.id }>
                   <button className="edit">
                       Edit
                     </button>
                   </Link>
                     
-                    <button className="delete" onClick={() => handleDelete(pin.id)}>
+                    <button className="delete" onClick={handleDelete}>
                       Delete
                     </button>
-                  </div>
+                  </div> */}
                 </div>
               ))}
           </div>
