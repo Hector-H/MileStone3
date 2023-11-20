@@ -8,6 +8,7 @@ import Signup from "./pages/signup";
 import Home from "./components/home";
 import AddPin from "./components/AddPin";
 import Profile from "./pages/profile";
+import UpdatePin from "./components/UpdatePin";
 //import Auth from "./components/Auth";
 //import Avatar from "./components/Avatar";
 //import Account from "./components/Account";
@@ -39,6 +40,7 @@ function App(){
             <Route path="/signup" element={<Signup />} />
             <Route path="/addpin" element={<AddPin />} />
             <Route path="/profile" element={<Profile />} />
+            <Route path="/profile/:id" element={<UpdatePin />} />
           </Routes>
         </div>
         </div>
