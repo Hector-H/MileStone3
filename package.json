@@ -1,0 +1,12 @@
+{
+  "name": "pinthis",
+  "version": "1.0.0",
+  "description": "Milestone Project 3",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

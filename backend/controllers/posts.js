@@ -1,9 +1,9 @@
 const express = require('express')
-const router = express.Router()
+const postRouter = express.Router()
 const Post = require('../models/post')
 
 
-router.post('/create', async (req, res) => {
+postRouter.post('/create', async (req, res) => {
     const body = req.body;
 
     try {
@@ -22,7 +22,7 @@ router.post('/create', async (req, res) => {
 })
 
 // Get a post by ID
-router.get('/:id', async (req, res) => {
+postRouter.get('/:id', async (req, res) => {
     const postId = req.params.id
 
     try {
@@ -38,4 +38,4 @@ router.get('/:id', async (req, res) => {
         return res.status(500).json({ error: error.message })
     }
 })
-module.exports = router
+module.exports = postRouter
